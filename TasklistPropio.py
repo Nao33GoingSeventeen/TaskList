@@ -1,8 +1,9 @@
 '''
-TaskList para tareas diarias, con funciones como:
+TaskList propio de Natalia Osorio Oliveros para tareas diarias, con funciones como:
 mostrar un menú 
 mostrar lista de tareas
 agregar tareas
+editar tareas
 marcar tareas
 eliminar tareas
 Salir del programa
@@ -17,12 +18,13 @@ nextId = 1
 
 ## Función para mostrar el menú de las acciones que se pueden realizar dentro del programa
 def menu():
-    print("---- TaskList ヾ(≧▽≦*)o ----\n")
+    print("\n---- TaskList ヾ(≧▽≦*)o ----\n")
     print("1. Agregar Tarea")
-    print("2. Lista de Tareas")
-    print("3. Marcar Tareas Realizadas")
-    print("4. Eliminar Tarea")
-    print("5. Salir del programa")
+    print("2. Editar Tarea")
+    print("3. Lista de Tareas")
+    print("4. Marcar Tareas Realizadas")
+    print("5. Eliminar Tarea")
+    print("6. Salir del programa")
     
 ##Función para mostrar la lista de Tareas
 def lista():
@@ -32,13 +34,13 @@ def lista():
        return
     
     ## Si hay tareas
-    print( "\n   ID   |   ESTADO   |   TÍTULO   ")
+    print( "\n   ID   |   ESTADO   |   TÍTULO   |   PRIORIDAD   |   FECHA DE REALIZACIÓN   |   FECHA LÍMITE   ")
     
     ## Recorrer cada campo de una tarea
     for t in tareas:
         estado = "OK " if t[2] else "NOT"
-        ## Imprimir tarea en el orden ID ESTADO TÍTULO
-        print(f" {t[0]:>3}    |    {estado}     |    {t[1]}  ")
+        ## Imprimir tarea en el orden ID ESTADO TÍTULO PRIORIDAD FECHA DE REALIZACIÓN Y FECHA LÍMITE
+        print(f" {t[0]:>7}    |    {estado}     |    {t[1]}   |   {t[2]}   |   {t[3]}   |   {t[4]}   |   {t[5]}   |")
         
 
 ## Función para agregar una tarea
@@ -48,18 +50,22 @@ def agregar():
     
     ## Colocar el título a la tarea
     ## función strip() para quitar los espacios que se añadan al título
-    titulo = input("\nTítulo: ").strip()
+    titulo = input("\nTítulo: ".strip())
     
     ## No se ingresa ningún título
     if not titulo:
         print("\n Título vacío →_→ ")
         return
     
+    ## Colocar la prioridad de la tarea
+    print("Ingrese la prioridad para la tarea")
+    
     ## Agregar la tarea
     tareas.append([nextId, titulo, False])    
     ## Incrementar Id
     nextId += 1
     print("\n¡Tarea agregada con éxito! \(@^0^@)/")
+    
     
 
 ## Función para marcar una tarea
